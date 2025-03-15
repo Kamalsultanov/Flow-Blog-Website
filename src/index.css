@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .nav-list {
+    @apply hover:bg-aqua hover:text-white h-full px-2 cursor-pointer flex items-center;
+  }
+}
+
+.triangle-left{
+    clip-path: polygon(100% 50%, 0 0, 0 100%);
+}
+
+.triangle-right{
+    clip-path: polygon(100% 0, 0 50%, 100% 100%);
+
+}
