@@ -6,13 +6,19 @@
 
 @layer components {
   .nav-list {
-    @apply hover:bg-aqua hover:text-white h-full px-2 cursor-pointer flex items-center;
+    @apply hover:bg-aqua hover:text-white h-full w-full px-2 cursor-pointer flex items-center;
   }
+}
+
+body{
+    font-family: 'Comfortaa', cursive;
+    background-color: #f6f6f6;
 }
 
 .triangle-left{
     clip-path: polygon(100% 50%, 0 0, 0 100%);
 }
+
 
 .triangle-right{
     clip-path: polygon(100% 0, 0 50%, 100% 100%);

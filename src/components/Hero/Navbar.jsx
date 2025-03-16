@@ -5,7 +5,7 @@ import { FaGithub } from "react-icons/fa";
 
 const Navbar = () => {
   return (
-    <nav className="flex justify-between px-5 h-14 shadow-lg">
+    <header className="flex justify-between  h-14 shadow-lg  ">
       <ul className="flex h-full">
         <li className="nav-list ">Home</li>
         <li className="nav-list ">Home</li>
@@ -13,7 +13,7 @@ const Navbar = () => {
       </ul>
       <ul className="flex h-full">
         <li className="nav-list ">
-          <FaPinterestP />
+          <FaPinterestP  />
         </li>
         <li className="nav-list ">
           <FaInstagram />
@@ -22,7 +22,7 @@ const Navbar = () => {
           <FaGithub />
         </li>
       </ul>
-    </nav>
+    </header>
   );
 };
 
