@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -10,19 +10,17 @@
   }
 }
 
-body{
-    font-family: 'Comfortaa', cursive;
-    background-color: #f6f6f6;
+body {
+  font-family: "Comfortaa", cursive;
+  background-color: #f6f6f6;
 }
 
-.triangle-left{
-    clip-path: polygon(100% 50%, 0 0, 0 100%);
+.triangle-left {
+  clip-path: polygon(100% 50%, 0 0, 0 100%);
 }
 
-
-.triangle-right{
-    clip-path: polygon(100% 0, 0 50%, 100% 100%);
-
+.triangle-right {
+  clip-path: polygon(100% 0, 0 50%, 100% 100%);
 }
 
 .tiptap {
@@ -31,11 +29,11 @@ body{
   }
 
   /* List styles */
-  ul, 
+  ul,
   ol {
     padding: 0 1rem;
     margin: 1.25rem 1rem 1.25rem 0.4rem;
-    
+
     li p {
       margin-top: 0.25em;
       margin-bottom: 0.25em;
@@ -43,39 +41,39 @@ body{
   }
 
   /* Heading styles */
-  h1, 
-  h2, 
-  h3, 
-  h4, 
-  h5, 
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
   h6 {
     line-height: 1.1;
     margin-top: 2.5rem;
     text-wrap: pretty;
   }
 
-  h1, 
+  h1,
   h2 {
     margin-top: 3.5rem;
     margin-bottom: 1.5rem;
   }
 
-  h1 { 
-    font-size: 1.4rem; 
+  h1 {
+    font-size: 1.4rem;
   }
 
-  h2 { 
-    font-size: 1.2rem; 
+  h2 {
+    font-size: 1.2rem;
   }
 
-  h3 { 
-    font-size: 1.1rem; 
+  h3 {
+    font-size: 1.1rem;
   }
 
-  h4, 
-  h5, 
-  h6 { 
-    font-size: 1rem; 
+  h4,
+  h5,
+  h6 {
+    font-size: 1rem;
   }
 
   /* Code and preformatted text styles */
@@ -91,7 +89,7 @@ body{
     background: var(--black);
     border-radius: 0.5rem;
     color: var(--white);
-    font-family: 'JetBrainsMono', monospace;
+    font-family: "JetBrainsMono", monospace;
     margin: 1.5rem 0;
     padding: 0.75rem 1rem;
 
@@ -114,4 +112,38 @@ body{
     border-top: 1px solid var(--gray-2);
     margin: 2rem 0;
   }
+}
+
+.rid-color {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: none;
+  outline: none;
+}
+.rid-color::-webkit-color-swatch {
+  border: none;
+}
+.rid-color::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+.rid-color::-moz-color-swatch {
+  border: none;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgb(192, 190, 190);
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: gray;
 }

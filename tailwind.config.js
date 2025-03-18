@@ -13,7 +13,8 @@ export default {
         aqua: '#58bcb3',
         light: '#f6f6f6',
         onyx: '#353935',
-        jet: '#343434'
+        jet: '#343434',
+        matte: '#28282B'
       },
       fontFamily: {
         'comfortaa': ['Comfortaa', 'cursive']

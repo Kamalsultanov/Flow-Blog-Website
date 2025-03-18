@@ -10,31 +10,37 @@ import Blog from "./components/admin/Blog";
 import Category from "./components/admin/Category";
 import Tag from "./components/admin/Tag";
 import Social from "./components/admin/Social";
+import { CategoryProvider } from "./Context/CategoryContext";
+import { TagProvider } from "./Context/TagContext";
 
 const App = () => {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Main />} />
-        </Route>
-        <Route path="/admin-login" element={<Login />} />
+      <CategoryProvider>
+        <TagProvider>
+          <Routes>
+            <Route path="/" element={<Layout />}>
+              <Route index element={<Main />} />
+            </Route>
+            <Route path="/admin-login" element={<Login />} />
 
-        <Route
-          path="/admin"
-          element={
-            <AdminRoute>
-              <AdminLayout />
-            </AdminRoute>
-          }
-        >
-          <Route path="dashboard" element={<Dashboard />} />
-          <Route path="create-blog" element={<Blog />} />
-          <Route path="category" element={<Category />} />
-          <Route path="tags" element={<Tag />} />
-          <Route path="social-media" element={<Social />} />
-        </Route>
-      </Routes>
+            <Route
+              path="/admin"
+              element={
+                <AdminRoute>
+                  <AdminLayout />
+                </AdminRoute>
+              }
+            >
+              <Route path="dashboard" element={<Dashboard />} />
+              <Route path="create-blog" element={<Blog />} />
+              <Route path="category" element={<Category />} />
+              <Route path="tags" element={<Tag />} />
+              <Route path="social-media" element={<Social />} />
+            </Route>
+          </Routes>
+        </TagProvider>
+      </CategoryProvider>
     </BrowserRouter>
   );
 };

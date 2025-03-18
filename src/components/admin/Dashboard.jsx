@@ -2,11 +2,11 @@ import React from "react";
 import { TiDocumentText } from "react-icons/ti";
 import { FaHashtag } from "react-icons/fa";
 import { FaEye } from "react-icons/fa";
+import { useCategory } from "../../Context/CategoryContext";
 
 const Dashboard = () => {
 
-  const categories = ["Category 1", "Category 2", "Category 3", "Category 4", "Category 5"]; // Example categories
-
+  const { categories} = useCategory();
   return (
     <section className=" gap-4 p-10 flex-wrap bg-onyx w-[80%]">
       <div className="flex gap-4 flex-wrap justify-center">
