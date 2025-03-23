@@ -55,7 +55,7 @@ const DashBoard = () => {
               className="w-1/2 h-1/2 text-white opacity-85 absolute -bottom-8 group-hover:-bottom-0
               group-hover:opacity-100 mx-auto transition-all duration-500"
             />
-            <h3 className="mt-7 font-semibold text-white">Views Count:</h3>
+            <h3 className="mt-7 font-semibold text-white">Category Count:</h3>
             <span className="text-white text-6xl mt-3">
               {categoryCount}
             </span>{" "}
