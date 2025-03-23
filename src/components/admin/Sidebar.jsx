@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router";
 import { IoMdPerson } from "react-icons/io";
+import { FaHome } from "react-icons/fa";
 
 const Sidebar = () => {
   return (
@@ -12,10 +13,13 @@ const Sidebar = () => {
 
       <ul className="text-white text-2xl py-4 font-semibold  w-full ">
         <li className="  px-3 py-2    hover:text-aqua">
-          <Link to="/admin/dashboard">Dashboard</Link>
+          <Link to="/admin">Dashboard</Link>
         </li>
         <li className=" px-3 py-2  hover:text-aqua">
-          <Link to="/admin/create-blog" className="w-full h-ful"> Blog</Link>
+          <Link to="/admin/create-blog" className="w-full h-ful">
+            {" "}
+            Blog
+          </Link>
         </li>
         <li className=" px-3 py-2   hover:text-aqua">
           <Link to="/admin/category">Category</Link>
@@ -26,7 +30,13 @@ const Sidebar = () => {
         <li className=" px-3 py-2    hover:text-aqua">
           <Link to="/admin/blog-list">BlogList</Link>
         </li>
-    
+
+        <li className=" px-3 py-2    hover:text-aqua">
+          <Link to="/" className="flex">
+            <FaHome />
+            <p className="px-2"> Home</p>
+          </Link>
+        </li>
       </ul>
     </section>
   );

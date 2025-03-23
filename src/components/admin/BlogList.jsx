@@ -258,12 +258,12 @@ const BlogList = () => {
 
         {!loading && !error && (
           <div>
-            <div className="w-full p-3 grid grid-cols-1 md:grid-cols-4 min-h-[600px] border-2 border-jet rounded-md bg-matte gap-3">
+            <div className="w-full p-3 grid grid-cols-1 md:grid-cols-4 min-h-[600px] border-2 border-jet rounded-md bg-matte gap-3 transition-all duration-300">
               {currentBlogs.length > 0 ? (
                 currentBlogs.map((blogPost) => (
                   <div
                     key={blogPost.id}
-                    className="bg-jet overflow-hidden shadow-md h-1/2 w-full flex flex-col relative group"
+                    className="bg-jet overflow-hidden shadow-md h-full w-full flex flex-col relative group"
                   >
                     {blogPost.imgUrl && (
                       <div className="h-2/3 overflow-hidden">
@@ -381,7 +381,7 @@ const BlogList = () => {
       )}
 
       {showEditForm && blogToEdit && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 h- flex items-center justify-center  z-50 overflow-auto ">
+        <div className="fixed inset-0 bg-black bg-opacity-50  flex items-center justify-center  z-50 overflow-auto ">
           <div className="bg-jet p-6 rounded-lg  ">
             <div className="flex justify-between items-center mb-4">
               <h4 className="text-xl font-bold">Edit Blog</h4>

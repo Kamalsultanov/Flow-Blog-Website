@@ -5,7 +5,7 @@ import AdminLayout from "./layout/AdminLayout";
 import Main from "./components/main/Main";
 import Login from "./components/login/Login";
 import AdminRoute from "./components/route-component/admin-route";
-import Dashboard from "./components/admin/DashBoard";
+import DashBoard from "./components/admin/DashBoard";
 import Blog from "./components/admin/Blog";
 import Category from "./components/admin/Category";
 import Tag from "./components/admin/Tag";
@@ -13,6 +13,7 @@ import Social from "./components/admin/Social";
 import BlogList from "./components/admin/BlogList";
 import { BlogProvider } from "./context/BlogContext";
 import About from "./components/main/About";
+import BlogDetailPage from "./components/main/BlogDetailPage.JSX";
 
 const App = () => {
   return (
@@ -22,6 +23,7 @@ const App = () => {
           <Route path="/" element={<Layout />}>
             <Route index element={<Main />} />
             <Route path="/about" element={<About />} />
+            <Route path="/blog/:id" element={<BlogDetailPage />} />
           </Route>
           <Route path="/admin-login" element={<Login />} />
 
@@ -33,14 +35,13 @@ const App = () => {
               </AdminRoute>
             }
           >
-            <Route index element={<Dashboard />} />
+            <Route index element={<DashBoard />} />
 
             <Route path="create-blog" element={<Blog />} />
             <Route path="category" element={<Category />} />
             <Route path="tags" element={<Tag />} />
             <Route path="social-media" element={<Social />} />
             <Route path="blog-list" element={<BlogList />} />
-            <Route path="/admin/dashboard" element={<Navigate to="/admin" />} />
           </Route>
         </Routes>
       </BlogProvider>

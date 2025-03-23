@@ -1,21 +1,24 @@
-import React from "react";
+import React, { use } from "react";
 import { useBlog } from "../../context/BlogContext";
+import { Navigate, useNavigate } from "react-router";
 
 const Blogs = () => {
   const { blog } = useBlog();
-
-
+  const navigate = useNavigate();
+  const navigateToDetail = (id) => {
+    navigate(`/blog/${id}`);
+  };
   const truncateHtml = (html, maxLength = 100) => {
     if (!html) return "";
-    
-    const plainText = html.replace(/<[^>]*>/g, '');
-    
+
+    const plainText = html.replace(/<[^>]*>/g, "");
+
     if (plainText.length > maxLength) {
       return plainText.substring(0, maxLength) + "...";
     }
     return plainText;
   };
-  
+
   return (
     <section className="max-w-screen-xl mx-auto md:flex">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mx-3">
@@ -33,13 +36,16 @@ const Blogs = () => {
                 <span className="text-aqua font-bold uppercase text-sm truncate">
                   {item.categoryName || "Category"}
                 </span>
-                <h1 className="font-bold text-xl mt-2 capitalize">{item.title}</h1>
-                <div
-                  className="text-gray-500 text-sm mt-2 overflow-hidden break-words line-clamp-4"
-                >
+                <h1 className="font-bold text-xl mt-2 capitalize">
+                  {item.title}
+                </h1>
+                <div className="text-gray-500 text-sm mt-2 overflow-hidden break-words line-clamp-4">
                   {truncateHtml(item.description)}
                 </div>
-                <button className="bg-aqua text-white px-4 py-2 mt-4 ">
+                <button
+                  className="bg-aqua text-white px-4 py-2 mt-4 "
+                  onClick={() => navigateToDetail(item.id)}
+                >
                   Read More
                 </button>
               </div>
