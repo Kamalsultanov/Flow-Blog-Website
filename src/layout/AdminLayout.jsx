@@ -1,16 +1,22 @@
-import React from 'react'
-import { Outlet } from 'react-router'
-import Sidebar from '../components/admin/Sidebar'
+import React from "react";
+import { Outlet } from "react-router";
+import Sidebar from "../components/admin/Sidebar";
+import { TagProvider } from "../Context/TagContext";
+import { CategoryProvider } from "../Context/CategoryContext";
 
 const AdminLayout = () => {
   return (
     <>
-      <section className='flex'>
-      <Sidebar/>
-      <Outlet/>
-      </section>
-      </>
-)
-}
+      <CategoryProvider>
+        <TagProvider>
+          <section className="flex">
+            <Sidebar />
+            <Outlet />
+          </section>
+        </TagProvider>
+      </CategoryProvider>
+    </>
+  );
+};
 
-export default AdminLayout
+export default AdminLayout;

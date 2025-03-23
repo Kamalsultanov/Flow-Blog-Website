@@ -4,6 +4,10 @@ import { EditorProvider, useCurrentEditor } from "@tiptap/react";
 import { FaCode } from "react-icons/fa";
 import StarterKit from "@tiptap/starter-kit";
 import React, { useEffect } from "react";
+import { LuUndo2 } from "react-icons/lu";
+import { LuRedo2 } from "react-icons/lu";
+import { FaListOl } from "react-icons/fa";
+import { TbBlockquote } from "react-icons/tb";
 
 const MenuBar = () => {
   const { editor } = useCurrentEditor();
@@ -13,7 +17,8 @@ const MenuBar = () => {
   }
 
   return (
-    <div className="bg-white text-onyx">
+    <div className="  bg-matte p-3  text-white">
+      <label className="">Add Content</label>
       <div className="px-2 py-1 flex flex-wrap gap-2 items-center font-sans">
         <button
           onClick={() => editor.chain().focus().toggleBold().run()}
@@ -21,20 +26,24 @@ const MenuBar = () => {
           className={`${
             editor.isActive("bold") ? "is-active" : ""
           } font-bold font-sans `}
-        > 
+        >
           A
         </button>
         <button
           onClick={() => editor.chain().focus().toggleItalic().run()}
           disabled={!editor.can().chain().focus().toggleItalic().run()}
-          className={`${editor.isActive("italic") ? "is-active" : ""} italic font-serif px-2 `}
+          className={`${
+            editor.isActive("italic") ? "is-active" : ""
+          } italic font-serif px-2 `}
         >
           I
         </button>
         <button
           onClick={() => editor.chain().focus().toggleStrike().run()}
           disabled={!editor.can().chain().focus().toggleStrike().run()}
-          className={`${editor.isActive("strike") ? "is-active" : ""} line-through`} 
+          className={`${
+            editor.isActive("strike") ? "is-active" : ""
+          } line-through`}
         >
           B
         </button>
@@ -47,7 +56,9 @@ const MenuBar = () => {
         </button>
         <button
           onClick={() => editor.chain().focus().setParagraph().run()}
-          className={`${editor.isActive("paragraph") ? "is-active" : ""} font-bold`}
+          className={`${
+            editor.isActive("paragraph") ? "is-active" : ""
+          } font-bold`}
         >
           P
         </button>
@@ -85,42 +96,27 @@ const MenuBar = () => {
           onClick={() => editor.chain().focus().toggleOrderedList().run()}
           className={editor.isActive("orderedList") ? "is-active" : ""}
         >
-          Ordered list
+          <FaListOl />
         </button>
-        <button
-          onClick={() => editor.chain().focus().toggleCodeBlock().run()}
-          className={editor.isActive("codeBlock") ? "is-active" : ""}
-        >
-          Code block
-        </button>
+
         <button
           onClick={() => editor.chain().focus().toggleBlockquote().run()}
           className={editor.isActive("blockquote") ? "is-active" : ""}
         >
-          Blockquote
+          <TbBlockquote />
         </button>
-        <button
-          onClick={() => editor.chain().focus().setHorizontalRule().run()}
-        >
-          Horizontal rule
-        </button>
-        <button onClick={() => editor.chain().focus().setHardBreak().run()}>
-          Hard break
-        </button>
+
         <button
           onClick={() => editor.chain().focus().undo().run()}
           disabled={!editor.can().chain().focus().undo().run()}
         >
-          Undo
+          <LuUndo2 />
         </button>
         <button
           onClick={() => editor.chain().focus().redo().run()}
           disabled={!editor.can().chain().focus().redo().run()}
         >
-          Redo
-        </button>
-        <button onClick={() => editor.chain().focus().unsetAllMarks().run()}>
-          Clear marks
+          <LuRedo2 />
         </button>
       </div>
     </div>
@@ -141,40 +137,33 @@ const extensions = [
   }),
 ];
 
-// Custom CSS to be added to your stylesheet
 const customStyles = `
 .ProseMirror {
-  min-height: 350px !important;
+  min-height: 100px !important;
   padding: 16px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  border-radius: 4px 5px 0 0;
 }
 `;
 
 const EditorComponent = ({ value, onChange }) => {
-  console.log("EditorComponent rendering with value:", value);
-  
-  // Add custom styles to document
   useEffect(() => {
-    const styleElement = document.createElement('style');
+    const styleElement = document.createElement("style");
     styleElement.textContent = customStyles;
     document.head.appendChild(styleElement);
-    
+
     return () => {
       document.head.removeChild(styleElement);
     };
   }, []);
-  
+
   return (
-    <section>
-      <h1>Add Description</h1>
-      <EditorProvider 
+    <section className=" border border-matte  ">
+      <EditorProvider
         slotBefore={<MenuBar />}
         extensions={extensions}
         content={value || ""}
         onUpdate={({ editor }) => {
           const html = editor.getHTML();
-          console.log("Editor content updated:", html);
           if (onChange) {
             onChange(html);
           }

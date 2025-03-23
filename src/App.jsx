@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Route, Routes } from "react-router";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router";
 import Layout from "./layout/Layout";
 import AdminLayout from "./layout/AdminLayout";
 import Main from "./components/main/Main";
@@ -10,37 +10,38 @@ import Blog from "./components/admin/Blog";
 import Category from "./components/admin/Category";
 import Tag from "./components/admin/Tag";
 import Social from "./components/admin/Social";
-import { CategoryProvider } from "./Context/CategoryContext";
-import { TagProvider } from "./Context/TagContext";
+import BlogList from "./components/admin/BlogList";
+import { BlogProvider } from "./context/BlogContext";
 
 const App = () => {
   return (
     <BrowserRouter>
-      <CategoryProvider>
-        <TagProvider>
-          <Routes>
-            <Route path="/" element={<Layout />}>
-              <Route index element={<Main />} />
-            </Route>
-            <Route path="/admin-login" element={<Login />} />
+      <BlogProvider>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<Main />} />
+          </Route>
+          <Route path="/admin-login" element={<Login />} />
 
-            <Route
-              path="/admin"
-              element={
-                <AdminRoute>
-                  <AdminLayout />
-                </AdminRoute>
-              }
-            >
-              <Route path="dashboard" element={<Dashboard />} />
-              <Route path="create-blog" element={<Blog />} />
-              <Route path="category" element={<Category />} />
-              <Route path="tags" element={<Tag />} />
-              <Route path="social-media" element={<Social />} />
-            </Route>
-          </Routes>
-        </TagProvider>
-      </CategoryProvider>
+          <Route
+            path="/admin"
+            element={
+              <AdminRoute>
+                <AdminLayout />
+              </AdminRoute>
+            }
+          >
+            <Route index element={<Dashboard />} />
+
+            <Route path="create-blog" element={<Blog />} />
+            <Route path="category" element={<Category />} />
+            <Route path="tags" element={<Tag />} />
+            <Route path="social-media" element={<Social />} />
+            <Route path="blog-list" element={<BlogList />} />
+            <Route path="/admin/dashboard" element={<Navigate to="/admin" />} />
+          </Route>
+        </Routes>
+      </BlogProvider>
     </BrowserRouter>
   );
 };

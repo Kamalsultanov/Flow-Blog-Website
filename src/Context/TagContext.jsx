@@ -25,49 +25,60 @@ export const TagProvider = ({ children }) => {
       setTags(response.data);
     } catch (err) {
       setError("Failed to fetch tags");
-      console.error("Error fetching tags:", err);
     } finally {
       setLoading(false);
     }
   };
 
-  const createTag = async (TagData) => {
+  const createTag = async (tagData) => {
+    if (!tagData.name || !tagData.name.trim()) {
+      setError("Tag Name is mandatory");
+      setLoading(false);
+      return;
+    }
+
     setLoading(true);
     setError(null);
 
     try {
-      const response = await axios.post(
+      const response2 = await axios.post(
         `${import.meta.env.VITE_API_URL}/Tag/create`,
-        categoryData,
+        tagData,
         {
           headers: {
-            "Content-Type": "application/json",
+            "Content-Type": "multipart/form-data",
           },
         }
       );
+
       await fetchTags();
-      return response.data;
+
+      return response2.data;
     } catch (err) {
-      setError("Failed to create category");
+      if (err.response && err.response.data) {
+        setError(err.response.data.message || "Failed to create tag");
+      } else {
+        setError("An unexpected error occurred");
+      }
+
       throw err;
     } finally {
       setLoading(false);
     }
   };
 
-  const deleteTag = async (categoryId) => {
+  const deleteTag = async (tagId) => {
     setLoading(true);
     setError(null);
 
     try {
       const response = await axios.delete(
-        `${import.meta.env.VITE_API_URL}/Tag/delete?id=${categoryId}`
+        `${import.meta.env.VITE_API_URL}/Tag/delete?id=${tagId}`
       );
-      await fetchCategories();
+      await fetchTags();
       return response.data;
     } catch (err) {
       setError("Failed to delete category");
-      console.error("Error deleting category:", err);
       throw err;
     } finally {
       setLoading(false);
@@ -85,7 +96,6 @@ export const TagProvider = ({ children }) => {
       setColors(response.data);
     } catch (err) {
       setError("Failed to fetch colors");
-      console.error("Error fetching colors:", err);
     } finally {
       setLoading(false);
     }
@@ -127,7 +137,6 @@ export const TagProvider = ({ children }) => {
       return response.data;
     } catch (err) {
       setError("Failed to delete color");
-      console.error("Error deleting color:", err);
       throw err;
     } finally {
       setLoading(false);
