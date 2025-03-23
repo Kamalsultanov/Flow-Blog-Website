@@ -91,7 +91,7 @@ const Blogs = () => {
         })}
       </div>
 
-      <div className="w-full mx-auto bg-white mt-10 p-2 md:w-[50%] md:mx-3 md:mt-0 md:max-h-screen shadow-md md:sticky right-0 top-0">
+      <div className="w-full mx-auto bg-white mt-10 p-2 md:w-[70%] md:mx-3 md:mt-0 md:min-h-screen shadow-md md:sticky right-0 top-0">
         <h1 className="font-semibold text-2xl m-3">ABOUT ME</h1>
         <div className="w-11/12 mx-auto">
           <img
