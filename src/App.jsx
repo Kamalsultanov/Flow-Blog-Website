@@ -10,10 +10,10 @@ import Category from "./components/admin/Category";
 import Tag from "./components/admin/Tag";
 import Social from "./components/admin/Social";
 import BlogList from "./components/admin/BlogList";
-import { BlogProvider } from "./context/BlogContext";
 import About from "./components/main/About";
 import BlogDetailPage from "./components/main/BlogDetailPage.JSX";
 import DashBoard from "./components/admin/DashBoard";
+import { BlogProvider } from "./context/BlogContext";
 
 const App = () => {
   return (
