@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router";
 import { useBlog } from "../../context/BlogContext";
 import { Link } from "react-router";
@@ -6,13 +6,10 @@ import { Link } from "react-router";
 const BlogDetailPage = () => {
   const { id } = useParams();
   const { getBlogById, singleBlog, loading, error, blog, fetchBlogs } = useBlog();
-  const [imageLoaded, setImageLoaded] = useState(false);
   const [relatedPosts, setRelatedPosts] = useState([]);
   const fetchedRef = useRef(false);
 
   useEffect(() => {
-    setImageLoaded(false);
-
     if (id && (!fetchedRef.current || fetchedRef.current !== id)) {
       getBlogById(id);
       fetchBlogs();
@@ -28,26 +25,19 @@ const BlogDetailPage = () => {
     }
   }, [blog, id]);
 
-  const handleImageLoad = () => {
-    setImageLoaded(true);
-  };
-
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>Error: {error}</div>;
-  if (!singleBlog) return <div>Waiting for blog data...</div>;
+  // Check if singleBlog exists before rendering main content
+  if (!singleBlog) return <div>Loading blog post...</div>;
 
   return (
     <section className="bg-halfwhite">
       <div className="mt-10 max-w-screen-xl mx-auto bg-white">
         <div>
-          <div className="w-full h-[500px] bg-gray-100">
+          <div className="w-full md:h-[500px] bg-gray-100">
             {singleBlog.imgUrl && (
               <img
                 src={`${import.meta.env.VITE_API_URL_IMAGE}${singleBlog.imgUrl}`}
                 alt={singleBlog.title}
-                onLoad={handleImageLoad}
                 className="w-full h-full object-cover"
-                style={{ opacity: imageLoaded ? 1 : 0, transition: "opacity 0.3s ease-in-out" }}
               />
             )}
           </div>
@@ -107,4 +97,3 @@ const BlogDetailPage = () => {
 };
 
 export default BlogDetailPage;
-
