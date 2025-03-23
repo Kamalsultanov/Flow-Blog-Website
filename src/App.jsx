@@ -5,7 +5,6 @@ import AdminLayout from "./layout/AdminLayout";
 import Main from "./components/main/Main";
 import Login from "./components/login/Login";
 import AdminRoute from "./components/route-component/admin-route";
-import DashBoard from "./components/admin/DashBoard";
 import Blog from "./components/admin/Blog";
 import Category from "./components/admin/Category";
 import Tag from "./components/admin/Tag";
@@ -14,6 +13,7 @@ import BlogList from "./components/admin/BlogList";
 import { BlogProvider } from "./context/BlogContext";
 import About from "./components/main/About";
 import BlogDetailPage from "./components/main/BlogDetailPage.JSX";
+import DashBoard from "./components/admin/DashBoard";
 
 const App = () => {
   return (

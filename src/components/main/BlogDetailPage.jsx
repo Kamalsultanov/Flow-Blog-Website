@@ -25,7 +25,6 @@ const BlogDetailPage = () => {
     }
   }, [blog, id]);
 
-  // Check if singleBlog exists before rendering main content
   if (!singleBlog) return <div>Loading blog post...</div>;
 
   return (
