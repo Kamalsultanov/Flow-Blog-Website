@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { BlockPicker, SliderPicker } from "react-color";
-import { useTag } from "../../Context/TagContext";
+import { useTag } from "../../context/TagContext";
 import { FaRegTrashCan } from "react-icons/fa6";
 
 const Tag = () => {

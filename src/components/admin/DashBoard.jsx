@@ -2,16 +2,14 @@ import React, { useEffect } from "react";
 import { TiDocumentText } from "react-icons/ti";
 import { FaHashtag } from "react-icons/fa";
 import { TbCategoryFilled } from "react-icons/tb";
-import { useTag } from "../../Context/TagContext"; 
+import { useTag } from "../../context/TagContext";
 import { useBlog } from "../../context/BlogContext";
-import { useCategory } from "../../Context/CategoryContext";
+import { useCategory } from "../../context/CategoryContext";
 
 const DashBoard = () => {
-  
-  const { blog } = useBlog(); 
-  const { tags } = useTag(); 
+  const { blog } = useBlog();
+  const { tags } = useTag();
   const { categories } = useCategory();
-
 
   const blogCount = blog.length;
   const tagCount = tags.length;
@@ -53,12 +51,14 @@ const DashBoard = () => {
             className="bg-gradient-to-r from-blue-700 w-full h-full to-blue-400
             relative overflow-hidden rounded-md flex items-center flex-col group shadow-lg"
           >
-            <TbCategoryFilled 
+            <TbCategoryFilled
               className="w-1/2 h-1/2 text-white opacity-85 absolute -bottom-8 group-hover:-bottom-0
               group-hover:opacity-100 mx-auto transition-all duration-500"
             />
             <h3 className="mt-7 font-semibold text-white">Views Count:</h3>
-            <span className="text-white text-6xl mt-3">{ categoryCount}</span>{" "}
+            <span className="text-white text-6xl mt-3">
+              {categoryCount}
+            </span>{" "}
           </div>
         </div>
       </div>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useBlog } from "../../context/BlogContext";
-import { useCategory } from "../../Context/CategoryContext";
-import { useTag } from "../../Context/TagContext";
+import { useCategory } from "../../context/CategoryContext";
+import { useTag } from "../../context/TagContext";
 import EditorComponent from "./TextEditor";
 import { RiEmotionSadLine } from "react-icons/ri";
 import { IoIosArrowForward } from "react-icons/io";
@@ -12,7 +12,8 @@ import { IoClose } from "react-icons/io5";
 import { FaCheck } from "react-icons/fa";
 
 const BlogList = () => {
-  const { blog, loading, error, deleteBlog, updateBlog, fetchBlogs } = useBlog();
+  const { blog, loading, error, deleteBlog, updateBlog, fetchBlogs } =
+    useBlog();
   const { categories } = useCategory();
   const { tags } = useTag();
 
@@ -43,7 +44,9 @@ const BlogList = () => {
     if (activeCategory === "") {
       setFilteredBlogs(blog);
     } else {
-      setFilteredBlogs(blog.filter((item) => item.categoryName === activeCategory));
+      setFilteredBlogs(
+        blog.filter((item) => item.categoryName === activeCategory)
+      );
     }
     setCurrentPage(1);
   }, [blog, activeCategory]);
@@ -77,10 +80,14 @@ const BlogList = () => {
     setBlogToEdit(blogPost);
 
     const selectedTagIds = blogPost.blogTags
-      ? blogPost.blogTags.map((tagItem) => tagItem.tagId).filter(id => id !== null && id !== undefined)
+      ? blogPost.blogTags
+          .map((tagItem) => tagItem.tagId)
+          .filter((id) => id !== null && id !== undefined)
       : [];
 
-    const categoryObj = categories.find((cat) => cat.name === blogPost.categoryName);
+    const categoryObj = categories.find(
+      (cat) => cat.name === blogPost.categoryName
+    );
     const categoryId = categoryObj ? categoryObj.id : "";
 
     setEditFormData({
@@ -176,21 +183,27 @@ const BlogList = () => {
     setIsSubmitting(true);
 
     try {
-      const cleanedTagIds = editFormData.tagIds.filter(id => id !== null && id !== undefined);
-      
+      const cleanedTagIds = editFormData.tagIds.filter(
+        (id) => id !== null && id !== undefined
+      );
+
       const updateData = {
         title: editFormData.title,
         content: editFormData.content,
         categoryId: editFormData.categoryId,
         tagIds: cleanedTagIds,
         image: editFormData.image || null,
-        imageUrl: !editFormData.image && editFormData.imageUrl 
-          ? editFormData.imageUrl.replace(`${import.meta.env.VITE_API_URL_IMAGE}`, '')
-          : ""
+        imageUrl:
+          !editFormData.image && editFormData.imageUrl
+            ? editFormData.imageUrl.replace(
+                `${import.meta.env.VITE_API_URL_IMAGE}`,
+                ""
+              )
+            : "",
       };
 
       await updateBlog(blogToEdit.id, updateData);
-      
+
       handleCloseEditForm();
       await fetchBlogs();
     } catch (error) {
@@ -268,7 +281,9 @@ const BlogList = () => {
                     {blogPost.imgUrl && (
                       <div className="h-2/3 overflow-hidden">
                         <img
-                          src={`${import.meta.env.VITE_API_URL_IMAGE}${blogPost.imgUrl}`}
+                          src={`${import.meta.env.VITE_API_URL_IMAGE}${
+                            blogPost.imgUrl
+                          }`}
                           alt={blogPost.title}
                           className="w-full h-full object-cover"
                           onError={(e) => {
@@ -290,14 +305,16 @@ const BlogList = () => {
                           {blogPost.blogTags &&
                             blogPost.blogTags.length > 0 && (
                               <div className="flex flex-wrap gap-2 mt-2">
-                                {blogPost.blogTags.slice(0, 3).map((tagItem) => (
-                                  <span
-                                    key={tagItem.id}
-                                    className="px-2 py-1 rounded-full text-xs bg-aqua "
-                                  >
-                                    {tagItem.tag.name}
-                                  </span>
-                                ))}
+                                {blogPost.blogTags
+                                  .slice(0, 3)
+                                  .map((tagItem) => (
+                                    <span
+                                      key={tagItem.id}
+                                      className="px-2 py-1 rounded-full text-xs bg-aqua "
+                                    >
+                                      {tagItem.tag.name}
+                                    </span>
+                                  ))}
                               </div>
                             )}
                         </div>
@@ -487,9 +504,9 @@ const BlogList = () => {
                 {editFormData.imageUrl && (
                   <div className="mt-3">
                     <p className="mb-2">Preview:</p>
-                    <img 
-                      src={editFormData.imageUrl} 
-                      alt="Preview" 
+                    <img
+                      src={editFormData.imageUrl}
+                      alt="Preview"
                       className="w-48 h-48 object-cover rounded"
                     />
                   </div>

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useBlog } from "../../context/BlogContext";
 import EditorComponent from "./TextEditor";
-import { useTag } from "../../Context/TagContext";
-import { useCategory } from "../../Context/CategoryContext";
+import { useTag } from "../../context/TagContext";
+import { useCategory } from "../../context/CategoryContext";
 import { FaCheck } from "react-icons/fa";
 
 const Blog = () => {
@@ -62,8 +62,8 @@ const Blog = () => {
       return {
         ...prevData,
         tagIds: isAlreadySelected
-          ? prevData.tagIds.filter((id) => id !== tagId) 
-          : [...prevData.tagIds, tagId], 
+          ? prevData.tagIds.filter((id) => id !== tagId)
+          : [...prevData.tagIds, tagId],
       };
     });
   };

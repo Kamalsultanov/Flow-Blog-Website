@@ -1,10 +1,17 @@
 import React, { useState } from "react";
-import { useCategory } from "../../Context/CategoryContext";
+import { useCategory } from "../../context/CategoryContext";
 import { FaRegTrashCan } from "react-icons/fa6";
 import { FaPen } from "react-icons/fa";
 
 const Category = () => {
-  const { categories, loading, error, createCategory, deleteCategory, updateCategory } = useCategory();
+  const {
+    categories,
+    loading,
+    error,
+    createCategory,
+    deleteCategory,
+    updateCategory,
+  } = useCategory();
 
   const [categoryName, setCategoryName] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -59,7 +66,7 @@ const Category = () => {
     try {
       await updateCategory(editCategoryId, { name: newCategoryName });
       setMessage("Category updated successfully!");
-      setIsEditModalOpen(false); 
+      setIsEditModalOpen(false);
     } catch (error) {
       setMessage(error.response?.data?.message || "Failed to update category");
     } finally {
@@ -80,7 +87,7 @@ const Category = () => {
             value={categoryName}
             onChange={handleInputChange}
             disabled={isLoading}
-            onKeyDown={(e) => e.key === "Enter" && handleCreateCategory()} 
+            onKeyDown={(e) => e.key === "Enter" && handleCreateCategory()}
           />
           <button
             className="text-white w-14 h-12 text-2xl flex items-center justify-center bg-aqua"
@@ -90,7 +97,15 @@ const Category = () => {
             {isLoading ? "...." : "+"}
           </button>
         </div>
-        {message && <p className={`mt-3 ${message.includes("Failed") ? "text-red-400" : "text-green-400"}`}>{message}</p>}
+        {message && (
+          <p
+            className={`mt-3 ${
+              message.includes("Failed") ? "text-red-400" : "text-green-400"
+            }`}
+          >
+            {message}
+          </p>
+        )}
       </div>
 
       <div className="mt-10">
@@ -102,13 +117,18 @@ const Category = () => {
         ) : categories.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-4">
             {categories.map((category) => (
-              <div key={category.id} className="bg-matte font-bold capitalize p-4 rounded flex relative justify-between items-center group overflow-hidden">
+              <div
+                key={category.id}
+                className="bg-matte font-bold capitalize p-4 rounded flex relative justify-between items-center group overflow-hidden"
+              >
                 <span className="capitalize">{category.name}</span>
                 <div className="flex gap-3 absolute -right-12 group-hover:right-1 transition-all duration-500">
                   <button onClick={() => handleDeleteCategory(category.id)}>
                     <FaRegTrashCan />
                   </button>
-                  <button onClick={() => openEditModal(category.id, category.name)}>
+                  <button
+                    onClick={() => openEditModal(category.id, category.name)}
+                  >
                     <FaPen />
                   </button>
                 </div>
@@ -123,7 +143,9 @@ const Category = () => {
       {isEditModalOpen && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
           <div className="bg-matte w-[45%] p-6 rounded shadow-lg text-black">
-            <h2 className="text-lg font-bold mb-4 text-white">Update Category</h2>
+            <h2 className="text-lg font-bold mb-4 text-white">
+              Update Category
+            </h2>
             <input
               type="text"
               className="w-full border p-2 mb-4"
@@ -131,10 +153,17 @@ const Category = () => {
               onChange={(e) => setNewCategoryName(e.target.value)}
             />
             <div className="flex justify-end gap-2">
-              <button className="bg-jet text-white px-4 py-2 rounded" onClick={() => setIsEditModalOpen(false)}>
+              <button
+                className="bg-jet text-white px-4 py-2 rounded"
+                onClick={() => setIsEditModalOpen(false)}
+              >
                 Cancel
               </button>
-              <button className="bg-slate-700 text-white px-4 py-2 rounded" onClick={handleUpdateCategory} disabled={isLoading}>
+              <button
+                className="bg-slate-700 text-white px-4 py-2 rounded"
+                onClick={handleUpdateCategory}
+                disabled={isLoading}
+              >
                 {isLoading ? "Updating..." : "Update"}
               </button>
             </div>
