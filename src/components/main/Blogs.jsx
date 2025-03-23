@@ -1,13 +1,22 @@
-import React, { use } from "react";
+import React, { useEffect, useState } from "react";
 import { useBlog } from "../../context/BlogContext";
 import { Navigate, useNavigate } from "react-router";
 
 const Blogs = () => {
   const { blog } = useBlog();
   const navigate = useNavigate();
+  const [popularPosts, setPopularPosts] = useState([]);
+
+  useEffect(() => {
+    if (blog && blog.length > 0) {
+      setPopularPosts(blog.slice(0, 3));
+    }
+  }, [blog]);
+
   const navigateToDetail = (id) => {
     navigate(`/blog/${id}`);
   };
+
   const truncateHtml = (html, maxLength = 100) => {
     if (!html) return "";
 
@@ -72,45 +81,26 @@ const Blogs = () => {
         <div className="mt-10">
           <h3 className="border-l-4 border-gray-300 px-2">Popular posts</h3>
           <ul className="w-full my-3 px-3">
-            <li className="flex border-y py-3">
-              <div className="w-2/3">
-                <span className="text-aqua font-bold uppercase text-sm">
-                  interior
-                </span>
-                <h5 className="text-gray-500">Title</h5>
-              </div>
-              <img
-                src="https://picsum.photos/400/200"
-                alt=""
-                className="w-1/3"
-              />
-            </li>
-            <li className="flex border-y py-3">
-              <div className="w-2/3">
-                <span className="text-aqua font-bold uppercase text-sm">
-                  interior
-                </span>
-                <h5 className="text-gray-500">Title</h5>
-              </div>
-              <img
-                src="https://picsum.photos/400/200"
-                alt=""
-                className="w-1/3"
-              />
-            </li>
-            <li className="flex border-y py-3">
-              <div className="w-2/3">
-                <span className="text-aqua font-bold uppercase text-sm">
-                  interior
-                </span>
-                <h5 className="text-gray-500">Title</h5>
-              </div>
-              <img
-                src="https://picsum.photos/400/200"
-                alt=""
-                className="w-1/3"
-              />
-            </li>
+            {popularPosts.map((post, index) => (
+              <li
+                key={index}
+                className="flex border-y py-3"
+                onClick={() => navigateToDetail(post.id)}
+                style={{ cursor: "pointer" }}
+              >
+                <div className="w-2/3">
+                  <span className="text-aqua font-bold uppercase text-sm">
+                    {post.categoryName || "Category"}
+                  </span>
+                  <h5 className="text-gray-500">{post.title}</h5>
+                </div>
+                <img
+                  src={`${import.meta.env.VITE_API_URL_IMAGE}${post.imgUrl}`}
+                  alt={post.title}
+                  className="w-1/3 object-cover"
+                />
+              </li>
+            ))}
           </ul>
         </div>
       </div>

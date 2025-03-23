@@ -14,7 +14,8 @@ export default {
         light: '#f6f6f6',
         onyx: '#353935',
         jet: '#343434',
-        matte: '#28282B'
+        matte: '#28282B',
+        halfwhite: '#f6f6f6',
       },
       fontFamily: {
         'comfortaa': ['Comfortaa', 'cursive']

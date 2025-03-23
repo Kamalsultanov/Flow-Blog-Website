@@ -2,16 +2,16 @@ import React from "react";
 
 const About = () => {
   return (
-    <section className="max-w-screen-xl mx-auto md:flex mt-10">
-      <div className="w-[90%]">
-        <div className="w-[90%] h-[400px]">
+    <section className="max-w-screen-xl mx-auto md:flex mt-10 bg-halfwhite">
+      <div className="w-full mx-auto bg-white">
+        <div className="w-full h-[400px]">
           <img
             src="https://picsum.photos/400/200"
             alt=""
             className="w-full h-full object-cover"
           />
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2">
+        <div className="grid grid-cols-1 md:grid-cols-2 p-4">
           <div className="py-5">
             <h1 className="text-aqua text-lg font-bold">ABOUT ME</h1>
             <h3 className="font-bold my-3 uppercase">HI, I am Gabriel</h3>
