@@ -6,7 +6,7 @@ import { useTag } from "../../Context/TagContext";
 import { useBlog } from "../../context/BlogContext";
 import { useCategory } from "../../Context/CategoryContext";
 
-const Dashboard = () => {
+const DashBoard = () => {
   
   const { blog } = useBlog(); 
   const { tags } = useTag(); 
@@ -66,4 +66,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default DashBoard;
