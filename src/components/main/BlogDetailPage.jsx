@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router";
 import { useBlog } from "../../context/BlogContext";
 import { Link } from "react-router";
+import Loading from "../loading/Loading";
 
 const BlogDetailPage = () => {
   const { id } = useParams();
@@ -25,10 +26,12 @@ const BlogDetailPage = () => {
     }
   }, [blog, id]);
 
-  if (!singleBlog) return <div>Loading blog post...</div>;
+  if (loading) return <Loading />;
+
+  if (!singleBlog) return <div className="flex justify-center items-center h-screen">No blog post found</div>;
 
   return (
-    <section className="bg-halfwhite">
+    <section className="bg-halfwhite relative">
       <div className="mt-10 max-w-screen-xl mx-auto bg-white">
         <div>
           <div className="w-full md:h-[500px] bg-gray-100">
@@ -61,15 +64,15 @@ const BlogDetailPage = () => {
           {relatedPosts.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
               {relatedPosts.map(post => (
-                <Link 
-                  to={`/blog/${post.id}`} 
+                <Link
+                  to={`/blog/${post.id}`}
                   key={post.id}
                   className="block hover:shadow-lg transition-shadow"
                 >
                   <div className="border rounded overflow-hidden">
                     <div className="h-48 overflow-hidden bg-gray-100">
                       {post.imgUrl && (
-                        <img 
+                        <img
                           src={`${import.meta.env.VITE_API_URL_IMAGE}${post.imgUrl}`}
                           alt={post.title}
                           className="w-full h-full object-cover hover:scale-105 transition-transform"
@@ -87,7 +90,10 @@ const BlogDetailPage = () => {
               ))}
             </div>
           ) : (
-            <p className="mt-2">Loading related posts...</p>
+            <div className="relative h-48">
+              <Loading />
+              <p className="text-center mt-32">Finding related posts...</p>
+            </div>
           )}
         </div>
       </div>
