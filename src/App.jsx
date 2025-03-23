@@ -12,6 +12,7 @@ import Tag from "./components/admin/Tag";
 import Social from "./components/admin/Social";
 import BlogList from "./components/admin/BlogList";
 import { BlogProvider } from "./context/BlogContext";
+import About from "./components/main/About";
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Main />} />
+            <Route path="/about" element={<About />} />
           </Route>
           <Route path="/admin-login" element={<Login />} />
 
