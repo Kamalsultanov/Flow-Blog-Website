@@ -14,7 +14,7 @@ import About from "./components/main/About";
 import DashBoard from "./components/admin/DashBoard";
 import { BlogProvider } from "./context/BlogContext";
 
-import BlogDetailPage from "./components/main/BlogDetailPage.JSX";
+import BlogDetailPage from "./components/main/BlogDetailPage.jsx";
 
 
 const App = () => {
