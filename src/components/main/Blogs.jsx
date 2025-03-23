@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { useBlog } from "../../context/BlogContext";
 import { Navigate, useNavigate } from "react-router";
+import Skeletonloader from "../loading/Skeletonloader";
 
 const Blogs = () => {
   const { blog } = useBlog();
   const navigate = useNavigate();
   const [popularPosts, setPopularPosts] = useState([]);
+  const [loading, setLoading] = useState(true); // Add loading state
 
   useEffect(() => {
     if (blog && blog.length > 0) {
       setPopularPosts(blog.slice(0, 3));
+      setLoading(false); // Set loading to false when blog data is available
     }
   }, [blog]);
 
@@ -28,12 +31,37 @@ const Blogs = () => {
     return plainText;
   };
 
+  if (loading) {
+    return (
+      <section className="max-w-screen-xl mx-auto md:flex">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mx-3 flex-1">
+          <div>
+            <Skeletonloader />
+          </div>
+          <div>
+            <Skeletonloader />
+          </div>
+          <div>
+            <Skeletonloader />
+          </div>
+          <div>
+            <Skeletonloader />
+          </div>
+        </div>
+
+      </section>
+    );
+  }
+
   return (
     <section className="max-w-screen-xl mx-auto md:flex">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mx-3">
         {blog.map((item, index) => {
           return (
-            <div key={index} className="bg-white shadow-lg  min-h-[400px]">
+            <div
+              key={index}
+              className="bg-white shadow-lg  min-h-[400px] hover:scale-105 transition-all duration-500"
+            >
               <div className="h-1/2">
                 <img
                   src={`${import.meta.env.VITE_API_URL_IMAGE}${item.imgUrl}`}
@@ -84,7 +112,7 @@ const Blogs = () => {
             {popularPosts.map((post, index) => (
               <li
                 key={index}
-                className="flex border-y py-3"
+                className="flex border-y py-3 hover:scale-105 transition-all duration-500"
                 onClick={() => navigateToDetail(post.id)}
                 style={{ cursor: "pointer" }}
               >
