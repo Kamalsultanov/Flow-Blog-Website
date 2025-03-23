@@ -12,7 +12,7 @@ import Social from "./components/admin/Social";
 import BlogList from "./components/admin/BlogList";
 import About from "./components/main/About";
 import DashBoard from "./components/admin/DashBoard";
-import { BlogProvider } from "./Context/BlogContext";
+import { BlogProvider } from "./context/BlogContext";
 
 import BlogDetailPage from "./components/main/BlogDetailPage.JSX";
 
