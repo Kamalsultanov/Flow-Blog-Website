@@ -17,43 +17,46 @@ import { BlogProvider } from "./context/BlogContext";
 import BlogDetailPage from "./components/main/BlogDetailPage.jsx";
 import { CategoryProvider } from "./context/CategoryContext.jsx";
 import CategoryDetailPage from "./components/main/CategoryDetailPage.jsx";
+import { SocialProvider } from "./context/SocialContext.jsx";
 
 const App = () => {
   return (
     <BrowserRouter>
-      <CategoryProvider>
-        <BlogProvider>
-          <Routes>
-            <Route path="/" element={<Layout />}>
-              <Route index element={<Main />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/blog/:id" element={<BlogDetailPage />} />
+      <SocialProvider>
+        <CategoryProvider>
+          <BlogProvider>
+            <Routes>
+              <Route path="/" element={<Layout />}>
+                <Route index element={<Main />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/blog/:id" element={<BlogDetailPage />} />
+                <Route
+                  path="/category/:categoryName"
+                  element={<CategoryDetailPage />}
+                />
+              </Route>
+              <Route path="/admin-login" element={<Login />} />
+
               <Route
-                path="/category/:categoryName"
-                element={<CategoryDetailPage />}
-              />
-            </Route>
-            <Route path="/admin-login" element={<Login />} />
+                path="/admin"
+                element={
+                  <AdminRoute>
+                    <AdminLayout />
+                  </AdminRoute>
+                }
+              >
+                <Route index element={<DashBoard />} />
 
-            <Route
-              path="/admin"
-              element={
-                <AdminRoute>
-                  <AdminLayout />
-                </AdminRoute>
-              }
-            >
-              <Route index element={<DashBoard />} />
-
-              <Route path="create-blog" element={<Blog />} />
-              <Route path="category" element={<Category />} />
-              <Route path="tags" element={<Tag />} />
-              <Route path="social-media" element={<Social />} />
-              <Route path="blog-list" element={<BlogList />} />
-            </Route>
-          </Routes>
-        </BlogProvider>
-      </CategoryProvider>
+                <Route path="create-blog" element={<Blog />} />
+                <Route path="category" element={<Category />} />
+                <Route path="tags" element={<Tag />} />
+                <Route path="social-media" element={<Social />} />
+                <Route path="blog-list" element={<BlogList />} />
+              </Route>
+            </Routes>
+          </BlogProvider>
+        </CategoryProvider>
+      </SocialProvider>
     </BrowserRouter>
   );
 };

@@ -24,7 +24,7 @@ const ShortAbout = () => {
       <h1 className="font-semibold text-2xl my-3 border-l-4 border-lightgrey px-2">ABOUT ME</h1>
       <div className="w-11/12 mx-auto">
         <img
-          src="https://picsum.photos/400/200"
+          src="/person.jpg"
           alt=""
           className="w-full h-full object-cover"
         />
@@ -41,7 +41,7 @@ const ShortAbout = () => {
           {popularPosts.slice(0, 3).map((post, index) => (
             <li
               key={index}
-              className="flex border-y py-3 hover:scale-105 transition-all duration-500"
+              className="flex border-y py-3 group transition-all duration-500"
               onClick={() => navigateToDetail(post.id)}
               style={{ cursor: "pointer" }}
             >
@@ -49,7 +49,7 @@ const ShortAbout = () => {
                 <span className="text-aqua font-bold uppercase text-[0.7em]">
                   {post.categoryName}
                 </span>
-                <h5 className="text-grey text-lg font-bold uppercase">
+                <h5 className="text-grey text-lg font-bold uppercase group-hover:text-aqua transition-colors duration-500">
                   {post.title}
                 </h5>
                 <div>

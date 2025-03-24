@@ -22,12 +22,12 @@ const Slider = () => {
   }, [blog]);
 
   const animateTransition = () => {
-    gsap.to(imageRef.current, { opacity: 0, duration: 0.4, ease: "power2.out" });
-    gsap.to(textRef.current, { opacity: 0, y: 10, duration: 0.4, ease: "power2.out" });
+    gsap.to(imageRef.current, { opacity: 0, duration: 0.6, ease: "power2.out" });
+    gsap.to(textRef.current, { opacity: 0, y: 10, duration: 0.6, ease: "power2.out" });
 
     setTimeout(() => {
-      gsap.to(imageRef.current, { opacity: 1, duration: 1, ease: "power2.in" });
-      gsap.to(textRef.current, { opacity: 1, y: 0, duration: 1, ease: "power2.in" });
+      gsap.to(imageRef.current, { opacity: 1, duration: 0.8, ease: "power2.in" });
+      gsap.to(textRef.current, { opacity: 1, y: 0, duration: 0.8, ease: "power2.in" });
     }, 150); 
   };
 

@@ -106,7 +106,7 @@ const BlogDetailPage = () => {
                     </div>
                     <div className="p-3">
                       <h3 className="text-aqua text-sm font-semibold uppercase truncate">
-                        {post.categoryName || "Category"}
+                        {post.categoryName }
                       </h3>
                       <h2 className="font-bold truncate">{post.title}</h2>
                     </div>

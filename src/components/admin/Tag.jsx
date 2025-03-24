@@ -117,7 +117,7 @@ const Tag = () => {
   };
 
   return (
-    <section className="p-10 bg-onyx w-[80%]">
+    <section className="p-10 bg-onyx w-full">
       <h1 className="text-3xl text-white">Tags</h1>
 
       <div className="mt-10">
@@ -275,7 +275,7 @@ const Tag = () => {
           <h3 className="text-white text-2xl pb-5 ">Existing Tags</h3>
           <div className="bg-matte p-4 rounded-md ">
             {tags && tags.length > 0 ? (
-              <ul className="space-y-2 flex gap-5 items-center justify-center">
+              <ul className="space-y-2 flex gap-5 items-center  flex-wrap justify-center">
                 {tags.map((tag) => {
                   const tagColorHex = tag.colorHexCode || "#cccccc";
                   return (
