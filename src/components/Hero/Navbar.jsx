@@ -1,15 +1,21 @@
 import React, { useState } from "react";
-import { FaPinterestP, FaInstagram, FaGithub } from "react-icons/fa";
+import { FaPinterestP, FaInstagram, FaTwitter, FaFacebookF, FaGithub } from "react-icons/fa";
+import { IoLogoLinkedin } from "react-icons/io5";
 import { Link } from "react-router";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { useCategory } from "../../context/CategoryContext";
+import { useSocial } from "../../context/SocialContext";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const { categories } = useCategory();
+  const { socialMedia, loading } = useSocial();
+
+  const socialLinks = socialMedia.length > 0 ? socialMedia[0] : {};
+
   return (
     <header>
-      <section className="flex justify-between h-16 left-0 right-0 z-50 bg-white shadow-md  top-0">
+      <section className="flex justify-between h-16 left-0 right-0 z-50 bg-white shadow-md top-0">
         <nav className="justify-between w-full md:max-w-screen-xl mx-auto hidden md:flex">
           <ul className="flex h-full text-grey">
             <li className="nav-list">
@@ -21,7 +27,7 @@ const Navbar = () => {
             <li className="nav-list relative group ">
               <span>Category</span>
               <ul className="absolute top-full left-0 bg-white min-w-36 min-h-36 opacity-0 group-hover:opacity-100 transition-all duration-300 z-50 shadow-lg">
-                { categories.map((category) => (
+                {categories.map((category) => (
                   <li className="nav-list text-grey capitalize py-1" key={category.id}>
                     <Link to={`/category/${category.name}`}>{category.name}</Link>
                   </li>
@@ -30,20 +36,73 @@ const Navbar = () => {
             </li>
           </ul>
           <ul className="flex h-full">
+            {socialLinks.instagramUrl && (
+              <li className="nav-list text-grey">
+                <a 
+                  href={socialLinks.instagramUrl} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="hover:text-aqua"
+                >
+                  <FaInstagram />
+                </a>
+              </li>
+            )}
+            {socialLinks.twitterUrl && (
+              <li className="nav-list text-grey">
+                <a 
+                  href={socialLinks.twitterUrl} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="hover:text-aqua"
+                >
+                  <FaTwitter />
+                </a>
+              </li>
+            )}
+            {socialLinks.facebookUrl && (
+              <li className="nav-list text-grey">
+                <a 
+                  href={socialLinks.facebookUrl} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="hover:text-aqua"
+                >
+                  <FaFacebookF />
+                </a>
+              </li>
+            )}
+            {socialLinks.linkedInUrl && (
+              <li className="nav-list text-grey">
+                <a 
+                  href={socialLinks.linkedInUrl} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="hover:text-aqua"
+                >
+                  <IoLogoLinkedin />
+                </a>
+              </li>
+            )}
             <li className="nav-list text-grey">
-              <Link to="https://www.pinterest.com">
+              <a 
+                href="https://www.pinterest.com" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="hover:text-aqua"
+              >
                 <FaPinterestP />
-              </Link>
+              </a>
             </li>
             <li className="nav-list text-grey">
-              <Link to="https://www.instagram.com">
-                <FaInstagram />
-              </Link>
-            </li>
-            <li className="nav-list text-grey">
-              <Link to="https://www.github.com">
+              <a 
+                href="https://www.github.com" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="hover:text-aqua"
+              >
                 <FaGithub />
-              </Link>
+              </a>
             </li>
           </ul>
         </nav>

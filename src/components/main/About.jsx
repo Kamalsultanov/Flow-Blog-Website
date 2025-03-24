@@ -51,6 +51,8 @@ const About = () => {
     } catch (error) {}
   };
 
+  const socialLinks = socialMedia.length > 0 ? socialMedia[0] : {};
+
   return (
     <section className="max-w-screen-xl mx-auto md:flex mt-10 bg-halfwhite">
       <div className="w-full mx-auto bg-white">
@@ -201,19 +203,47 @@ const About = () => {
             </form>
           </div>
 
-          <div className="abosolute bottom-0 left-0   flex items-center text-xl  mt-5 md:mt-0 md:justify-normal gap-3 text-grey">
-            <span className="hover:text-aqua cursor-pointer">
-              <FaInstagram />
-            </span>
-            <span className="hover:text-aqua cursor-pointer">
-              <FaTwitter />
-            </span>
-            <span className="hover:text-aqua cursor-pointer">
-              <FaFacebookF />
-            </span>
-            <span className="hover:text-aqua cursor-pointer">
-              <IoLogoLinkedin />
-            </span>
+          <div className="abosolute bottom-0 left-0 flex items-center text-xl mt-5 md:mt-0 md:justify-normal gap-3 text-grey">
+            {socialLinks.instagramUrl && (
+              <a
+                href={socialLinks.instagramUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-aqua cursor-pointer"
+              >
+                <FaInstagram />
+              </a>
+            )}
+            {socialLinks.twitterUrl && (
+              <a
+                href={socialLinks.twitterUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-aqua cursor-pointer"
+              >
+                <FaTwitter />
+              </a>
+            )}
+            {socialLinks.facebookUrl && (
+              <a
+                href={socialLinks.facebookUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-aqua cursor-pointer"
+              >
+                <FaFacebookF />
+              </a>
+            )}
+            {socialLinks.linkedInUrl && (
+              <a
+                href={socialLinks.linkedInUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-aqua cursor-pointer"
+              >
+                <IoLogoLinkedin />
+              </a>
+            )}
           </div>
         </div>
       </div>
