@@ -3,7 +3,8 @@ import React from 'react'
 const Footer = () => {
   return (
     <section className='p-5 bg-white mt-10 flex justify-center items-center'>
-      <h1>Footer</h1>
+      <img src="/logo/logo.png" alt="logo" className=' h-12' />
+
     </section>
   )
 }

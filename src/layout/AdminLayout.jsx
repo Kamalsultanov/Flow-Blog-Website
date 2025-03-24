@@ -7,14 +7,12 @@ import { CategoryProvider } from "../context/CategoryContext";
 const AdminLayout = () => {
   return (
     <>
-      <CategoryProvider>
         <TagProvider>
           <section className="flex">
             <Sidebar />
             <Outlet />
           </section>
         </TagProvider>
-      </CategoryProvider>
     </>
   );
 };

@@ -4,7 +4,8 @@ import Slider from "../Hero/Slider";
 
 const Main = () => {
   return (
-    <main className="w-full mt-10">
+    <main className="w-full  ">
+     
       <Slider />
       <Blogs />
     </main>
