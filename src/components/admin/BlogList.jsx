@@ -246,7 +246,7 @@ const BlogList = () => {
   }, []);
 
   return (
-    <section className="p-10 bg-onyx w-full  text-white  shadow-lg">
+    <section className="p-10 bg-onyx w-full  text-white  min-h-screen shadow-lg">
       <div className=" ">
         <div>
           <h3 className="text-2xl font-bold mb-6">Blog List</h3>
