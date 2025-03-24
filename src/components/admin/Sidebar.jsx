@@ -5,7 +5,7 @@ import { FaHome, FaArrowRight } from "react-icons/fa";
 
 const Sidebar = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
-  const location = useLocation(); 
+  const location = useLocation();
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
@@ -27,43 +27,55 @@ const Sidebar = () => {
 
         <ul className="text-white text-2xl py-4 font-semibold w-full">
           <li
-            className={`px-3 py-2 border-b border-gray-500 ${
-              location.pathname === "/admin" ? "bg-aqua text-white" : "hover:text-aqua"
+            className={`px-3 py-4 border-b border-gray-500 ${
+              location.pathname === "/admin"
+                ? "bg-aqua text-white"
+                : "hover:text-aqua"
             }`}
           >
             <Link to="/admin">Dashboard</Link>
           </li>
           <li
-            className={`px-3 py-2 border-b border-gray-500 ${
-              location.pathname === "/admin/create-blog" ? "bg-aqua text-white" : "hover:text-aqua"
+            className={`px-3 py-4 border-b border-gray-500 ${
+              location.pathname === "/admin/create-blog"
+                ? "bg-aqua text-white"
+                : "hover:text-aqua"
             }`}
           >
             <Link to="/admin/create-blog">Create Blog</Link>
           </li>
           <li
-            className={`px-3 py-2 border-b border-gray-500 ${
-              location.pathname === "/admin/category" ? "bg-aqua text-white" : "hover:text-aqua"
+            className={`px-3 py-4 border-b border-gray-500 ${
+              location.pathname === "/admin/category"
+                ? "bg-aqua text-white"
+                : "hover:text-aqua"
             }`}
           >
             <Link to="/admin/category">Categories</Link>
           </li>
           <li
-            className={`px-3 py-2 border-b border-gray-500 ${
-              location.pathname === "/admin/tags" ? "bg-aqua text-white" : "hover:text-aqua"
+            className={`px-3 py-4 border-b border-gray-500 ${
+              location.pathname === "/admin/tags"
+                ? "bg-aqua text-white"
+                : "hover:text-aqua"
             }`}
           >
             <Link to="/admin/tags">Tags</Link>
           </li>
           <li
-            className={`px-3 py-2 border-b border-gray-500 ${
-              location.pathname === "/admin/blog-list" ? "bg-aqua text-white" : "hover:text-aqua"
+            className={`px-3 py-4 border-b border-gray-500 ${
+              location.pathname === "/admin/blog-list"
+                ? "bg-aqua text-white"
+                : "hover:text-aqua"
             }`}
           >
             <Link to="/admin/blog-list">Existing Blogs</Link>
           </li>
           <li
-            className={`px-3 py-2 border-b border-gray-500 flex ${
-              location.pathname === "/" ? "bg-aqua text-white" : "hover:text-aqua"
+            className={`px-3 py-4 border-b border-gray-500 flex ${
+              location.pathname === "/"
+                ? "bg-aqua text-white"
+                : "hover:text-aqua"
             }`}
           >
             <Link to="/" className="flex items-center">

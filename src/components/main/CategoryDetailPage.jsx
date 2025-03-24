@@ -24,7 +24,7 @@ const CategoryDetailPage = () => {
   };
 
   return (
-    <div className="container mx-auto px-4 py-8 p-5">
+    <div className="container mx-auto px-4 py-8 p-5 min-h-[55vh]">
       <h1 className="text-4xl font-bold  text-aqua mb-10 "> {categoryName}</h1>
 
       {loading && <Loading />}

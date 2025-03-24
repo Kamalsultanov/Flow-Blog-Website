@@ -31,19 +31,45 @@ export const SocialProvider = ({ children }) => {
     }
   };
 
-  const createSocialMedia = async (socialMediaData) => {
+  const getSocialMedia = async (id) => {
     setLoading(true);
     setError(null);
 
     try {
-      const formData = new FormData();
-      formData.append("InstagramUrl", socialMediaData.instagramUrl);
-      formData.append("TwitterUrl", socialMediaData.twitterUrl);
-      formData.append("FacebookUrl", socialMediaData.facebookUrl);
-      formData.append("LinkedInUrl", socialMediaData.linkedInUrl);
+      const response = await axios.get(
+        `${
+          import.meta.env.VITE_API_URL
+        }/SocialMedia/getbyid?id=dac61790-1bcc-4434-948a-448e791e2a07`
+      );
+      return response.data;
+    } catch (err) {
+      setError("Failed to fetch social media data");
+      throw err;
+    } finally {
+      setLoading(false);
+    }
+  };
 
-      const response = await axios.post(
-        `${import.meta.env.VITE_API_URL}/SocialMedia/create`,
+  const updateSocialMedia = async (id, updatedData) => {
+    setLoading(true);
+    setError(null);
+
+    try {
+
+      const formData = new FormData();
+      formData.append("Id", id);
+
+      formData.append("InstagramUrl", updatedData.InstagramUrl || "");
+      formData.append("TwitterUrl", updatedData.TwitterUrl || "");
+      formData.append("FacebookUrl", updatedData.FacebookUrl || "");
+      formData.append("LinkedInUrl", updatedData.LinkedInUrl || "");
+      formData.append(
+        "CreatedAt",
+        updatedData.CreatedAt || new Date().toISOString()
+      );
+
+      const response = await axios.put(
+        `${import.meta.env.VITE_API_URL}/SocialMedia/update`,
         formData,
         {
           headers: {
@@ -51,17 +77,22 @@ export const SocialProvider = ({ children }) => {
           },
         }
       );
+
+
       await fetchSocialMedia();
-      return response.data;
     } catch (err) {
-      setError("Failed to create social media links");
-      console.error("Error creating social media:", err);
+
+
+      const errorMessage = err.response?.data?.errors
+        ? Object.values(err.response.data.errors).flat().join(", ")
+        : "Failed to update social media";
+
+      setError(errorMessage);
       throw err;
     } finally {
       setLoading(false);
     }
   };
-
   const sendEmail = async (emailData) => {
     setLoading(true);
     setError(null);
@@ -91,7 +122,6 @@ export const SocialProvider = ({ children }) => {
       const serverErrors = err.response?.data?.errors || {};
       const errorMessages = Object.values(serverErrors).flat().join("\n");
       setError(errorMessages || "Failed to send email");
-      console.error("Error sending email:", err.response?.data || err);
       throw err;
     } finally {
       setLoading(false);
@@ -106,8 +136,9 @@ export const SocialProvider = ({ children }) => {
     emailStatus,
     loading,
     error,
+    updateSocialMedia,
     fetchSocialMedia,
-    createSocialMedia,
+    getSocialMedia,
     sendEmail,
   };
 

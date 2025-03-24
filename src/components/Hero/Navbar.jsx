@@ -22,7 +22,7 @@ const Navbar = () => {
               <span>Category</span>
               <ul className="absolute top-full left-0 bg-white min-w-36 min-h-36 opacity-0 group-hover:opacity-100 transition-all duration-300 z-50 shadow-lg">
                 { categories.map((category) => (
-                  <li className="nav-list text-grey capitalize" key={category.id}>
+                  <li className="nav-list text-grey capitalize py-1" key={category.id}>
                     <Link to={`/category/${category.name}`}>{category.name}</Link>
                   </li>
                 ))}

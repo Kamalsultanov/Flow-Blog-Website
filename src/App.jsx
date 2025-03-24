@@ -18,6 +18,7 @@ import BlogDetailPage from "./components/main/BlogDetailPage.jsx";
 import { CategoryProvider } from "./context/CategoryContext.jsx";
 import CategoryDetailPage from "./components/main/CategoryDetailPage.jsx";
 import { SocialProvider } from "./context/SocialContext.jsx";
+import NotFound from "./components/notfound/NotFound.jsx";
 
 const App = () => {
   return (
@@ -36,7 +37,7 @@ const App = () => {
                 />
               </Route>
               <Route path="/admin-login" element={<Login />} />
-
+              <Route path="*" element={<NotFound />} />
               <Route
                 path="/admin"
                 element={
