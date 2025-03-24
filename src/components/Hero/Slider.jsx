@@ -22,22 +22,20 @@ const Slider = () => {
   }, [blog]);
 
   const animateTransition = () => {
-    gsap.to(imageRef.current, { opacity: 0, duration: 0.6, ease: "power2.out" });
-    gsap.to(textRef.current, { opacity: 0, y: 10, duration: 0.6, ease: "power2.out" });
+    gsap.to(imageRef.current, { opacity: 0, duration: 0.5, ease: "power2.out" });
+    gsap.to(textRef.current, { opacity: 0,  duration: 0.5, ease: "power2.out" });
 
     setTimeout(() => {
-      gsap.to(imageRef.current, { opacity: 1, duration: 0.8, ease: "power2.in" });
-      gsap.to(textRef.current, { opacity: 1, y: 0, duration: 0.8, ease: "power2.in" });
-    }, 150); 
+      gsap.to(imageRef.current, { opacity: 1, duration: 0.6, ease: "power2.out" });
+      gsap.to(textRef.current, { opacity: 1,  duration: 0.8, ease: "power2.out" });
+    },300); 
   };
 
   const goToPrevious = () => {
     animateTransition();
-    setTimeout(() => {
       setCurrentIndex((prevIndex) =>
         prevIndex === 0 ? blogImages.length - 1 : prevIndex - 1
       );
-    }, 300);
   };
 
   const goToNext = () => {
@@ -68,12 +66,13 @@ const Slider = () => {
               ref={imageRef}
               src={blogImages[currentIndex]}
               alt={`Blog slide ${currentIndex + 1}`}
-              className="w-full h-[300px] md:h-[450px] object-cover opacity-1"
+              className="w-full h-[300px] md:h-[450px] object-cover opacity-1 transition-all"
             />
 
             <div
               ref={textRef}
-              className="absolute z-50 bg-white top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 h-1/2 w-1/2 md:w-1/4 p-4 flex flex-col justify-center items-center overflow-hidden opacity-1"
+              className="absolute z-50 bg-white top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 h-1/2 w-1/2 md:w-1/4 p-4 flex flex-col justify-center
+               items-center overflow-hidden opacity-1 drop-shadow-md transition-all drop-shadow-md"
             >
               <h1 className=" font-semibold mb-2 text-center text-aqua uppercase text-sm">
                 {currentBlog?.categoryName}
