@@ -14,7 +14,7 @@ const Sidebar = () => {
   return (
     <section className="relative">
       <section
-        className={`min-h-screen bg-matte fixed z-40 left-0 top-0 w-44 md:w-60 flex flex-col items-center ${
+        className={`min-h-screen bg-matte fixed z-40  top-0 w-44 md:w-60 flex flex-col items-center ${
           isSidebarOpen ? "left-0" : "-left-44 md:-left-60"
         } transition-all duration-300`}
       >
