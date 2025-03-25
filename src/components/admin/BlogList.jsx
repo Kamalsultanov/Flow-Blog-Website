@@ -296,13 +296,13 @@ const BlogList = () => {
                           />
                         </div>
                       )}
-                      <div className="p-3 flex-1 flex flex-col h-1/3">
-                        <h4 className="text-xl font-semibold mb-2 capitalize">
+                      <div className="p-3 flex-1 flex flex-col ">
+                        <h4 className="text-xl font-semibold mb-2 capitalize ">
                           {blogPost.title}
                         </h4>
 
                         <div className="mt-auto">
-                          <div className="flex justify-between items-center mb-3">
+                          <div className="flex flex-col sm:flex-row justify-between items-center mb-3">
                             <span className="bg-matte px-2 py-1 rounded text-sm">
                               {blogPost.categoryName}
                             </span>

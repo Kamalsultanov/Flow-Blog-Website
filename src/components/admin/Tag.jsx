@@ -128,8 +128,8 @@ const Tag = () => {
               <h3 className="px-3 py-3 text-white">Choose color for tag:</h3>
               {colors.length > 0 ? (
                 <div
-                  className="grid grid-cols-2 md:grid-cols-7 gap-5 grid-rows-3 border border-white bg-slate-100 w-full 
-                  p-3 h-36 rounded-sm mb-3 overflow-y-auto custom-scrollbar"
+                  className="grid grid-cols-2 md:grid-cols-7 gap-10 grid-rows-3 border border-white bg-slate-100 w-full 
+                  p-3 min-h-36 rounded-sm mb-3 overflow-y-auto custom-scrollbar"
                 >
                   {colors.map((item) => (
                     <div
@@ -140,15 +140,15 @@ const Tag = () => {
                           selectedColor && selectedColor.id === item.id
                             ? "3px solid black"
                             : "1px solid gray",
-                        position: "relative",
+                
                       }}
-                      className="group  w-9 h-7 hover:scale-110 cursor-pointer transition-all duration-200"
+                      className="group  w-9 h-7 hover:scale-105 cursor-pointer transition-all duration-200"
                       onMouseEnter={() => handleColorMouseEnter(item.id)}
                       onMouseLeave={handleColorMouseLeave}
                     >
                       <div
                         ref={tooltipRef}
-                        className={`absolute z-50 bg-onyx text-white p-2 rounded flex flex-col items-start shadow-lg 
+                        className={`absolute  bg-onyx text-white p-2 rounded flex flex-col items-start shadow-lg 
                                    ${
                                      hoveredColor === item.id
                                        ? "block"

@@ -71,7 +71,7 @@ const Slider = () => {
 
             <div
               ref={textRef}
-              className="absolute z-50 bg-white top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 h-1/2 w-1/2 md:w-1/4 p-4 flex flex-col justify-center
+              className="absolute z-40 bg-white top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 h-1/2 w-1/2 md:w-1/4 p-4 flex flex-col justify-center
                items-center overflow-hidden opacity-1 drop-shadow-md transition-all drop-shadow-md"
             >
               <h1 className=" font-semibold mb-2 text-center text-aqua uppercase text-sm">
