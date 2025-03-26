@@ -19,7 +19,7 @@ export const CategoryProvider = ({ children }) => {
 
     try {
       const response = await axios.get(
-        `${import.meta.env.VITE_API_URL}/Category/GetAll`
+        `${import.meta.env.VITE_API_URL}/Category/getall`
       );
       setCategories(response.data);
     } catch (err) {
@@ -48,7 +48,6 @@ y    } finally {
       return response.data;
     } catch (err) {
       setError("Failed to create category");
-      console.error("Error creating category:", err);
       throw err;
     } finally {
       setLoading(false);
